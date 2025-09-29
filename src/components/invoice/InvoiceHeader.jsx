@@ -5,7 +5,7 @@ const InvoiceHeader = ({ invoiceId, company }) => {
   const { country, city, street, number } = address;
   return (
     <>
-      <div className="flex justify-between items-center border-b pb-6">
+      <div className="flex justify-between items-center border-b pb-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Invoice</h1>
           <p className="text-gray-600">

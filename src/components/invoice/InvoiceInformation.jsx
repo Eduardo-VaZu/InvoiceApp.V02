@@ -9,7 +9,7 @@ const InvoiceInformation = ({ client, payment, date }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Billed To</h3>
           <p className="text-gray-600">{name}</p>
