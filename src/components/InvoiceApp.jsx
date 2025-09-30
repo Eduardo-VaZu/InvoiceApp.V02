@@ -11,10 +11,35 @@ const InvoiceApp = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handleAddItem = (newItem) => {
-    setInvoiceData((prevData) => ({
-      ...prevData,
-      items: [...prevData.items, newItem],
-    }));
+    const newProductLower = newItem.product.toLowerCase(); 
+
+    setInvoiceData((prevData) => {
+      const existingItemIndex = prevData.items.findIndex(
+        (item) => item.product.toLowerCase() === newProductLower
+      );
+
+      if (existingItemIndex !== -1) {
+        const updatedItems = prevData.items.map((item, index) => {
+          if (index === existingItemIndex) {
+            return {
+              ...item,
+              quantity: item.quantity + newItem.quantity,
+            };
+          }
+          return item;
+        });
+
+        return {
+          ...prevData,
+          items: updatedItems,
+        };
+      } else {
+        return {
+          ...prevData,
+          items: [...prevData.items, newItem],
+        };
+      }
+    });
     setIsFormOpen(false);
   };
 

@@ -13,14 +13,14 @@ const InvoiceRowItems = ({ item, handleDeleteItem }) => {
   const total = price * quantity;
   return (
     <>
-      <tr className="block p-4 mb-4 bg-white border rounded-lg shadow-sm md:table-row md:border-none md:p-0 md:mb-0 md:shadow-none hover:bg-gray-50 transition-colors duration-200">
+      <tr className="block p-4 my-4 bg-white border rounded-lg shadow-sm md:table-row md:border-none md:p-0 md:mb-0 md:shadow-none hover:bg-gray-50 transition-colors duration-200">
         
         {/* Celda de Producto: Centrado en móvil, alineado a la izquierda en escritorio */}
-        <td className="flex justify-start items-center py-1 font-medium text-gray-900 md:table-cell md:px-6 md:py-4 md:font-normal md:text-center">
+        <td className="flex justify-between items-center py-1 font-medium text-gray-900 md:table-cell md:px-6 md:py-4 md:font-normal md:text-center">
           <span className="text-sm font-bold text-gray-600 uppercase md:hidden mr-2">
             Product:
           </span>
-          <p className="flex-1">{product}</p> {/* Encerramos en un <p> para mejor control de flex */}
+          {product}
         </td>
 
         {/* Celdas de Valores (Precio, Cantidad, Total): Alineadas a la derecha en escritorio */}

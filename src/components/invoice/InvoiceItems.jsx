@@ -6,7 +6,7 @@ const InvoiceItems = ({ items, handleDeleteItem, ...rest }) => {
 
   return (
     <div className="mt-7" {...rest}>
-      <div className="overflow-x-auto rounded-2xl ">
+      <div className="overflow-x-auto rounded-2xl mt-1">
         <table className="min-w-full">
           <thead className="bg-indigo-200 hidden md:table-header-group">
             <tr>
