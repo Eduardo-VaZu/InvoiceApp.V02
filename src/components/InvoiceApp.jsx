@@ -11,7 +11,7 @@ const InvoiceApp = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handleAddItem = (newItem) => {
-    const newProductLower = newItem.product.toLowerCase(); 
+    const newProductLower = newItem.product.toLowerCase();
 
     setInvoiceData((prevData) => {
       const existingItemIndex = prevData.items.findIndex(
@@ -78,8 +78,8 @@ const InvoiceApp = () => {
 
             <div className="mt-10 p-4 border-t border-gray-200 text-center">
               <p className="text-xs text-gray-500 italic">
-                Gracias por su negocio. Todos los pagos vencen a los 30 días de
-                la emisión de esta factura.
+                Thank you for your business. All payments are due within 30 days
+                of the issuance of this invoice.
               </p>
             </div>
           </div>

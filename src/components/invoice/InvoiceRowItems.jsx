@@ -15,7 +15,6 @@ const InvoiceRowItems = ({ item, handleDeleteItem }) => {
     <>
       <tr className="block p-4 my-4 bg-white border rounded-lg shadow-sm md:table-row md:border-none md:p-0 md:mb-0 md:shadow-none hover:bg-gray-50 transition-colors duration-200">
         
-        {/* Celda de Producto: Centrado en móvil, alineado a la izquierda en escritorio */}
         <td className="flex justify-between items-center py-1 font-medium text-gray-900 md:table-cell md:px-6 md:py-4 md:font-normal md:text-center">
           <span className="text-sm font-bold text-gray-600 uppercase md:hidden mr-2">
             Product:
@@ -23,7 +22,6 @@ const InvoiceRowItems = ({ item, handleDeleteItem }) => {
           {product}
         </td>
 
-        {/* Celdas de Valores (Precio, Cantidad, Total): Alineadas a la derecha en escritorio */}
         <td className="flex justify-between items-center py-1 text-gray-700 md:table-cell md:px-6 md:py-4 md:text-center">
           <span className="text-sm font-bold text-gray-600 uppercase md:hidden">
             Price
@@ -44,8 +42,7 @@ const InvoiceRowItems = ({ item, handleDeleteItem }) => {
           </span>
           {formatCurrency(total)}
         </td>
-        
-        {/* Celda de Acción: Alineada a la derecha en escritorio */}
+
         <td className="flex justify-between items-center py-1 font-bold text-indigo-600 md:table-cell md:px-6 md:py-4 md:text-center">
           <span className="text-sm font-bold text-gray-600 uppercase md:hidden">
             Accion

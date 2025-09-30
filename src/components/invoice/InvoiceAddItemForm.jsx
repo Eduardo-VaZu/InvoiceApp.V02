@@ -32,14 +32,14 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
         className="p-4 bg-white border border-indigo-200 rounded-lg shadow-lg mb-6"
       >
         <h4 className="text-md font-bold text-indigo-700 mb-4">
-          Agregar Nuevo Ítem
+          Add New Item
         </h4>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 
           <div className="md:col-span-2">
             <label className="block text-xs font-medium text-gray-600 mb-1">
-              Producto
+              Product
             </label>
             <input
               type="text"
@@ -53,7 +53,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
 
           <div>
             <label className="block text-xs font-medium text-gray-600 mb-1">
-              Cantidad
+              Quantity
             </label>
             <input
               type="number"
@@ -67,7 +67,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
 
           <div>
             <label className="block text-xs font-medium text-gray-600 mb-1">
-              Precio Unitario (USD)
+              Unit Price (USD)
             </label>
             <input
               type="number"
@@ -87,13 +87,13 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
             onClick={onCancel}
             className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition duration-150"
           >
-            Cancelar
+            Cancel
           </button>
           <button
             type="submit"
             className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 transition duration-150"
           >
-            Guardar Producto
+            Save Product
           </button>
         </div>
       </form>

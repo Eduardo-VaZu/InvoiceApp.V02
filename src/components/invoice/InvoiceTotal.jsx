@@ -17,7 +17,7 @@ const InvoiceTotal = ({ items }) => {
           <span>USD {subtotal.toFixed(2)}</span>
         </div>
         <div className="flex justify-between text-sm font-medium text-red-600 border-b border-dashed border-red-200 pb-2">
-          <span>Descuento Aplicado:</span>
+          <span>Discount Applied:</span>
           {discount === 50.0 ? (
             <span>- USD {discount.toFixed(2)}</span>
           ) : (
@@ -26,13 +26,13 @@ const InvoiceTotal = ({ items }) => {
         </div>
 
         <div className="flex justify-between text-sm text-gray-700 pt-2">
-          <span>Impuesto ({taxRate * 100}%):</span>
+          <span>Tax  ({taxRate * 100}%):</span>
           <span>USD {taxAmount.toFixed(2)}</span>
         </div>
 
         <div className="flex justify-between pt-3 border-t border-indigo-200">
           <span className="text-lg font-bold text-indigo-800">
-            TOTAL A PAGAR:
+            TOTAL TO PAY:
           </span>
           <span className="text-xl font-extrabold text-indigo-900">
             USD {total.toFixed(2)}

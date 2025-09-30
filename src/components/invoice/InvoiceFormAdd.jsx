@@ -6,7 +6,7 @@ const InvoiceFormAdd = ({handleAddItem, setIsFormOpen, isFormOpen}) => {
     <>
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-xl font-bold text-gray-800">
-          Detalle de Servicios
+          Service Details
         </h3>
         <button
           onClick={() => setIsFormOpen(!isFormOpen)}
@@ -26,7 +26,7 @@ const InvoiceFormAdd = ({handleAddItem, setIsFormOpen, isFormOpen}) => {
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             ></path>
           </svg>
-          <span>{isFormOpen ? "Cerrar Formulario" : "Añadir Ítem"} </span>
+          <span>{isFormOpen ? "Close Form" : "Add Item"} </span>
         </button>
       </div>
 
