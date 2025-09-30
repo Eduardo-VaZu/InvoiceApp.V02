@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
 const InvoiceTotal = ({ items }) => {
-  const discount = 50.0;
-  const taxRate = 0.1;
+  const taxRate = 0.19;
   const subtotal = items.reduce(
     (sum, item) => sum + item.quantity * item.price,
     0
   );
+  const discount = subtotal > 999 ? 50.0 : 0.0;
   const taxAmount = (subtotal - discount) * taxRate;
   const total = subtotal - discount + taxAmount;
   return (
@@ -18,10 +18,10 @@ const InvoiceTotal = ({ items }) => {
         </div>
         <div className="flex justify-between text-sm font-medium text-red-600 border-b border-dashed border-red-200 pb-2">
           <span>Descuento Aplicado:</span>
-          {subtotal > 999 ? (
+          {discount === 50.0 ? (
             <span>- USD {discount.toFixed(2)}</span>
           ) : (
-            <span> USD 0.00</span>
+            <span> USD {discount.toFixed(2)}</span>
           )}
         </div>
 
