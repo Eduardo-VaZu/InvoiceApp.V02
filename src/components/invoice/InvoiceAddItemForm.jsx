@@ -45,7 +45,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
               type="text"
               value={product}
               onChange={(e) => setproduct(e.target.value)}
-              placeholder="Nombre del producto"
+              placeholder="Name product"
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm"
             />
