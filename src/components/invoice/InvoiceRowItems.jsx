@@ -1,42 +1,61 @@
 import PropTypes from "prop-types";
+import InvoiceIconTrashRow from "./InvoiceIconTrashRow";
 
 const InvoiceRowItems = ({ item, handleDeleteItem }) => {
   const { id, product, price, quantity } = item;
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
+  };
+
+  const total = price * quantity;
   return (
     <>
-      <tr className="hover:bg-indigo-50 transition duration-150 ease-in-out">
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-700">
-          {product}
+      <tr className="block p-4 mb-4 bg-white border rounded-lg shadow-sm md:table-row md:border-none md:p-0 md:mb-0 md:shadow-none hover:bg-gray-50 transition-colors duration-200">
+        
+        {/* Celda de Producto: Centrado en móvil, alineado a la izquierda en escritorio */}
+        <td className="flex justify-start items-center py-1 font-medium text-gray-900 md:table-cell md:px-6 md:py-4 md:font-normal md:text-center">
+          <span className="text-sm font-bold text-gray-600 uppercase md:hidden mr-2">
+            Product:
+          </span>
+          <p className="flex-1">{product}</p> {/* Encerramos en un <p> para mejor control de flex */}
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-700">
-          ${price}
+
+        {/* Celdas de Valores (Precio, Cantidad, Total): Alineadas a la derecha en escritorio */}
+        <td className="flex justify-between items-center py-1 text-gray-700 md:table-cell md:px-6 md:py-4 md:text-center">
+          <span className="text-sm font-bold text-gray-600 uppercase md:hidden">
+            Price
+          </span>
+          {formatCurrency(price)}
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-700 ">
+
+        <td className="flex justify-between items-center py-1 text-gray-700 md:table-cell md:px-6 md:py-4 md:text-center">
+          <span className="text-sm font-bold text-gray-600 uppercase md:hidden">
+            Quantity
+          </span>
           {quantity}
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-700">
-          ${quantity * price}
+
+        <td className="flex justify-between items-center py-1 font-bold text-indigo-600 md:table-cell md:px-6 md:py-4 md:text-center">
+          <span className="text-sm font-bold text-gray-600 uppercase md:hidden">
+            Total
+          </span>
+          {formatCurrency(total)}
         </td>
-        <td className="py-3 md:py-4 px-3 text-center">
+        
+        {/* Celda de Acción: Alineada a la derecha en escritorio */}
+        <td className="flex justify-between items-center py-1 font-bold text-indigo-600 md:table-cell md:px-6 md:py-4 md:text-center">
+          <span className="text-sm font-bold text-gray-600 uppercase md:hidden">
+            Accion
+          </span>
           <button
             onClick={() => handleDeleteItem(id)}
-            className="p-1 rounded-full text-red-500 hover:bg-red-100 transition duration-150 focus:outline-none"
-            aria-label="Eliminar ítem"
+            className="p-2 text-red-600 hover:bg-red-100 rounded-full transition-colors duration-200"
+            aria-label={`Delete item ${product}`}
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-              ></path>
-            </svg>
+            <InvoiceIconTrashRow className="h-5 w-5" />
           </button>
         </td>
       </tr>
