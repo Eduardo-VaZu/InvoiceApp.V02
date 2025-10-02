@@ -1,20 +1,13 @@
-import PropTypes from "prop-types";
 import InvoiceIconTrashRow from "./InvoiceIconTrashRow";
 
-const InvoiceRowItems = ({ item, handleDeleteItem }) => {
+const InvoiceRowItems = ({ item, handleDeleteItem, formatCurrency }) => {
   const { id, product, price, quantity } = item;
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(amount);
-  };
 
   const total = price * quantity;
+
   return (
     <>
       <tr className="block p-4 my-4 bg-white border rounded-lg shadow-sm md:table-row md:border-none md:p-0 md:mb-0 md:shadow-none hover:bg-gray-50 transition-colors duration-200">
-        
         <td className="flex justify-between items-center py-1 font-medium text-gray-900 md:table-cell md:px-6 md:py-4 md:font-normal md:text-center">
           <span className="text-sm font-bold text-gray-600 uppercase md:hidden mr-2">
             Product:
@@ -60,12 +53,3 @@ const InvoiceRowItems = ({ item, handleDeleteItem }) => {
   );
 };
 export default InvoiceRowItems;
-
-InvoiceRowItems.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    product: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-  }).isRequired,
-};

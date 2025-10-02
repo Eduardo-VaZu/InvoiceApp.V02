@@ -1,55 +1,20 @@
-import { useCallback, useState } from "react";
-import getInvoice from "../service/getInvoice";
 import InvoiceHeader from "./invoice/InvoiceHeader";
 import InvoiceInformation from "./invoice/InvoiceInformation";
 import InvoiceItems from "./invoice/InvoiceItems";
 import InvoiceTotal from "./invoice/InvoiceTotal";
 import InvoiceFormAdd from "./invoice/InvoiceFormAdd";
+import useForm from "../hooks/useForm";
 
 const InvoiceApp = () => {
-  const [invoiceData, setInvoiceData] = useState(getInvoice());
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
-  const handleAddItem = useCallback((newItem) => {
-    const newProductLower = newItem.product.toLowerCase();
-
-    setInvoiceData((prevData) => {
-      const existingItem = prevData.items.find(
-        (item) => item.product.toLowerCase() === newProductLower
-      );
-
-      if (existingItem) {
-        return {
-          ...prevData,
-          items: prevData.items.map((item) =>
-            item.product.toLowerCase() === newProductLower
-              ? {
-                  ...item,
-                  quantity: Number(item.quantity) + Number(newItem.quantity),
-                }
-              : item
-          ),
-        };
-      }
-
-      const newId = Math.max(0, ...prevData.items.map((item) => item.id)) + 1;
-      const postItem = { id: newId, ...newItem };
-
-      return {
-        ...prevData,
-        items: [...prevData.items, postItem],
-      };
-    });
-
-    setIsFormOpen(false);
-  }, []);
-
-  const handleDeleteItem = useCallback((itemId) => {
-    setInvoiceData((prevData) => ({
-      ...prevData,
-      items: prevData.items.filter((item) => item.id !== itemId),
-    }));
-  }, []);
+  const {
+    formatCurrency,
+    handlePrint,
+    handleDeleteItem,
+    handleAddItem,
+    invoiceData,
+    isFormOpen,
+    setIsFormOpen,
+  } = useForm;
 
   return (
     <>
@@ -67,6 +32,7 @@ const InvoiceApp = () => {
             />
             <div className="mt-4 pt-4 border-t">
               <InvoiceFormAdd
+                handlePrint={handlePrint}
                 handleAddItem={handleAddItem}
                 isFormOpen={isFormOpen}
                 setIsFormOpen={setIsFormOpen}
@@ -74,6 +40,7 @@ const InvoiceApp = () => {
               <InvoiceItems
                 items={invoiceData.items}
                 handleDeleteItem={handleDeleteItem}
+                formatCurrency={formatCurrency}
               />
             </div>
             <InvoiceTotal items={invoiceData.items} />

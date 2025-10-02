@@ -1,11 +1,10 @@
 import InvoiceRowItems from "./InvoiceRowItems";
-import PropTypes from "prop-types";
 
-const InvoiceItems = ({ items, handleDeleteItem, ...rest }) => {
+const InvoiceItems = ({ items, handleDeleteItem, formatCurrency }) => {
   const headers = ["Product", "Unit Price", "Quantity", "Total", "Action"];
 
   return (
-    <div className="mt-7" {...rest}>
+    <div className="mt-7">
       <div className="overflow-x-auto rounded-2xl mt-1">
         <table className="min-w-full">
           <thead className="bg-indigo-200 hidden md:table-header-group">
@@ -28,6 +27,7 @@ const InvoiceItems = ({ items, handleDeleteItem, ...rest }) => {
                   key={item.id}
                   item={item}
                   handleDeleteItem={handleDeleteItem}
+                  formatCurrency={formatCurrency}
                 />
               ))
             ) : (
@@ -46,10 +46,4 @@ const InvoiceItems = ({ items, handleDeleteItem, ...rest }) => {
     </div>
   );
 };
-
-InvoiceItems.propTypes = {
-  items: PropTypes.array.isRequired,
-  handleDeleteItem: PropTypes.func.isRequired,
-};
-
 export default InvoiceItems;

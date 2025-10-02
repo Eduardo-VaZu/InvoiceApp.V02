@@ -1,5 +1,3 @@
-import PropTypes from "prop-types"; 
-
 const InvoiceHeader = ({ invoiceId, company }) => {
   const { name, fiscalNumber, address } = company;
   const { country, city, street, number } = address;
@@ -26,16 +24,3 @@ const InvoiceHeader = ({ invoiceId, company }) => {
 
 export default InvoiceHeader;
 
-InvoiceHeader.propTypes = {
-  invoiceId: PropTypes.string.isRequired,
-  company: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    fiscalNumber: PropTypes.number.isRequired,
-    address: PropTypes.shape({
-      country: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      street: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-};

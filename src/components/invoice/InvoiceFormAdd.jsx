@@ -1,9 +1,7 @@
 import InvoiceAddItemForm from "./InvoiceAddItemForm";
 
-const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
-  const handlePrint = () => {
-    window.print();
-  };
+const InvoiceFormAdd = ({ handlePrint, handleAddItem, setIsFormOpen, isFormOpen }) => {
+  
   return (
     <>
       <div className="flex justify-between items-center mb-4">

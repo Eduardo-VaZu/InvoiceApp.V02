@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 const InvoiceInformation = ({ client, payment, date }) => {
   const {
     name,
@@ -38,20 +36,3 @@ const InvoiceInformation = ({ client, payment, date }) => {
 };
 
 export default InvoiceInformation;
-
-InvoiceInformation.propTypes = {
-  client: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    address: PropTypes.shape({
-      country: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      street: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-  payment: PropTypes.shape({
-    status: PropTypes.string.isRequired,
-    transactionDate: PropTypes.string.isRequired,
-  }).isRequired,
-  date: PropTypes.string.isRequired,
-};

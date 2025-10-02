@@ -1,29 +1,15 @@
-import { useState } from "react";
+import useForm from "../../hooks/useForm";
 
 const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
-  const [product, setproduct] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(0);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!product.trim() || Number(quantity) <= 0 || Number(price) <= 0) {
-      console.error("Por favor, complete todos los campos correctamente.");
-      return;
-    }
-
-    const newItem = {
-      product: product.trim(),
-      quantity: Number(quantity),
-      price: Number(price),
-    };
-
-    handleAddItem(newItem);
-    setproduct("");
-    setQuantity(1);
-    setPrice(0);
-  };
+  const {
+    product,
+    quantity,
+    price,
+    setproduct,
+    setQuantity,
+    setPrice,
+    handleSubmit,
+  } = useForm(handleAddItem);
 
   return (
     <>

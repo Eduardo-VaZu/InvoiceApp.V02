@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 
 const InvoiceTotal = ({ items }) => {
   const taxRate = 0.19;
@@ -44,9 +43,3 @@ const InvoiceTotal = ({ items }) => {
 };
 export default InvoiceTotal;
 
-InvoiceTotal.propTypes = {
-  items: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired,
-  tax: PropTypes.number.isRequired,
-  subTotal: PropTypes.number.isRequired,
-};
