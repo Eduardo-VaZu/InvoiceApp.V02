@@ -10,14 +10,13 @@ const InvoiceApp = () => {
   const [invoiceData, setInvoiceData] = useState(getInvoice());
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  
   const countListItems = useMemo(() => {
     return invoiceData.items.length + 1;
   }, [invoiceData.items]);
 
   const handleAddItem = (newItem) => {
     const newProductLower = newItem.product.toLowerCase();
-    
+
     setInvoiceData((prevData) => {
       const existingItem = prevData.items.find(
         (item) => item.product.toLowerCase() === newProductLower
@@ -26,11 +25,14 @@ const InvoiceApp = () => {
       if (existingItem) {
         return {
           ...prevData,
-          items: prevData.items.map(item => 
-            item.product.toLowerCase() === newProductLower 
-              ? { ...item, quantity: Number(item.quantity) + Number(newItem.quantity) }
+          items: prevData.items.map((item) =>
+            item.product.toLowerCase() === newProductLower
+              ? {
+                  ...item,
+                  quantity: Number(item.quantity) + Number(newItem.quantity),
+                }
               : item
-          )
+          ),
         };
       }
 
@@ -48,7 +50,6 @@ const InvoiceApp = () => {
       items: prevData.items.filter((item) => item.id !== itemId),
     }));
   };
-
 
   return (
     <>
