@@ -1,6 +1,6 @@
 import InvoiceAddItemForm from "./InvoiceAddItemForm";
 
-const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
+const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen, countListItems }) => {
   const handlePrint = () => {
     window.print();
   };
@@ -13,7 +13,7 @@ const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
           className="px-4 py-2 text-sm font-semibold text-white bg-gray-500 rounded-lg shadow-md hover:bg-gray-600 transition duration-150 flex items-center space-x-1"
         >
           <svg
-            class="w-5 h-5 text-gray-800 dark:text-white"
+            className="w-5 h-5 text-gray-800 dark:text-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -23,8 +23,8 @@ const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
           >
             <path
               stroke="currentColor"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z"
             />
           </svg>
@@ -36,7 +36,7 @@ const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
           className="px-4 py-2 text-sm font-semibold text-white bg-indigo-500 rounded-lg shadow-md hover:bg-indigo-600 transition duration-150 flex items-center space-x-1"
         >
           <svg
-            class="w-5 h-5 text-gray-800 dark:text-white"
+            className="w-5 h-5 text-gray-800 dark:text-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -46,9 +46,9 @@ const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M5 12h14m-7 7V5"
             />
           </svg>
@@ -59,6 +59,7 @@ const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
       {isFormOpen && (
         <InvoiceAddItemForm
           handleAddItem={handleAddItem}
+          countListItems={countListItems}
           onCancel={() => setIsFormOpen(false)}
           currency={"USD"}
         />

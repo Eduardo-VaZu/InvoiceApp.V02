@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import getInvoice from "../service/getInvoice";
 import InvoiceHeader from "./invoice/InvoiceHeader";
 import InvoiceInformation from "./invoice/InvoiceInformation";
@@ -10,35 +10,34 @@ const InvoiceApp = () => {
   const [invoiceData, setInvoiceData] = useState(getInvoice());
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  
+  const countListItems = useMemo(() => {
+    return invoiceData.items.length + 1;
+  }, [invoiceData.items]);
+
   const handleAddItem = (newItem) => {
     const newProductLower = newItem.product.toLowerCase();
-
+    
     setInvoiceData((prevData) => {
-      const existingItemIndex = prevData.items.findIndex(
+      const existingItem = prevData.items.find(
         (item) => item.product.toLowerCase() === newProductLower
       );
 
-      if (existingItemIndex !== -1) {
-        const updatedItems = prevData.items.map((item, index) => {
-          if (index === existingItemIndex) {
-            return {
-              ...item,
-              quantity: item.quantity + newItem.quantity,
-            };
-          }
-          return item;
-        });
-
+      if (existingItem) {
         return {
           ...prevData,
-          items: updatedItems,
-        };
-      } else {
-        return {
-          ...prevData,
-          items: [...prevData.items, newItem],
+          items: prevData.items.map(item => 
+            item.product.toLowerCase() === newProductLower 
+              ? { ...item, quantity: Number(item.quantity) + Number(newItem.quantity) }
+              : item
+          )
         };
       }
+
+      return {
+        ...prevData,
+        items: [...prevData.items, newItem],
+      };
     });
     setIsFormOpen(false);
   };
@@ -49,6 +48,8 @@ const InvoiceApp = () => {
       items: prevData.items.filter((item) => item.id !== itemId),
     }));
   };
+
+
   return (
     <>
       <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -68,6 +69,7 @@ const InvoiceApp = () => {
                 handleAddItem={handleAddItem}
                 isFormOpen={isFormOpen}
                 setIsFormOpen={setIsFormOpen}
+                countListItems={countListItems}
               />
               <InvoiceItems
                 items={invoiceData.items}

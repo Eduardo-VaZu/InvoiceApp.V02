@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
+const InvoiceAddItemForm = ({ handleAddItem, countListItems, onCancel }) => {
   const [product, setproduct] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
@@ -14,11 +14,12 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
     }
 
     const newItem = {
-      id: Date.now(),
+      id: countListItems,
       product: product.trim(),
       quantity: Number(quantity),
       price: Number(price),
     };
+    console.log(newItem.id);
     handleAddItem(newItem);
     setproduct("");
     setQuantity(1);
@@ -31,12 +32,9 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
         onSubmit={handleSubmit}
         className="p-4 bg-white border border-indigo-200 rounded-lg shadow-lg mb-6"
       >
-        <h4 className="text-md font-bold text-indigo-700 mb-4">
-          Add New Item
-        </h4>
+        <h4 className="text-md font-bold text-indigo-700 mb-4">Add New Item</h4>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-
           <div className="md:col-span-2">
             <label className="block text-xs font-medium text-gray-600 mb-1">
               Product
