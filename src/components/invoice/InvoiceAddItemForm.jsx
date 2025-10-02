@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const InvoiceAddItemForm = ({ handleAddItem, countListItems, onCancel }) => {
+const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
   const [product, setproduct] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
@@ -14,12 +14,11 @@ const InvoiceAddItemForm = ({ handleAddItem, countListItems, onCancel }) => {
     }
 
     const newItem = {
-      id: countListItems,
       product: product.trim(),
       quantity: Number(quantity),
       price: Number(price),
     };
-    console.log(newItem.id);
+
     handleAddItem(newItem);
     setproduct("");
     setQuantity(1);

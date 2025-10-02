@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import getInvoice from "../service/getInvoice";
 import InvoiceHeader from "./invoice/InvoiceHeader";
 import InvoiceInformation from "./invoice/InvoiceInformation";
@@ -10,11 +10,7 @@ const InvoiceApp = () => {
   const [invoiceData, setInvoiceData] = useState(getInvoice());
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const countListItems = useMemo(() => {
-    return invoiceData.items.length + 1;
-  }, [invoiceData.items]);
-
-  const handleAddItem = (newItem) => {
+  const handleAddItem = useCallback((newItem) => {
     const newProductLower = newItem.product.toLowerCase();
 
     setInvoiceData((prevData) => {
@@ -36,20 +32,24 @@ const InvoiceApp = () => {
         };
       }
 
+      const newId = Math.max(0, ...prevData.items.map((item) => item.id)) + 1;
+      const postItem = { id: newId, ...newItem };
+
       return {
         ...prevData,
-        items: [...prevData.items, newItem],
+        items: [...prevData.items, postItem],
       };
     });
-    setIsFormOpen(false);
-  };
 
-  const handleDeleteItem = (itemId) => {
+    setIsFormOpen(false);
+  }, []);
+
+  const handleDeleteItem = useCallback((itemId) => {
     setInvoiceData((prevData) => ({
       ...prevData,
       items: prevData.items.filter((item) => item.id !== itemId),
     }));
-  };
+  }, []);
 
   return (
     <>
@@ -70,7 +70,6 @@ const InvoiceApp = () => {
                 handleAddItem={handleAddItem}
                 isFormOpen={isFormOpen}
                 setIsFormOpen={setIsFormOpen}
-                countListItems={countListItems}
               />
               <InvoiceItems
                 items={invoiceData.items}

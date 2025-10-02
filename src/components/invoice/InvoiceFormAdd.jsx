@@ -1,6 +1,6 @@
 import InvoiceAddItemForm from "./InvoiceAddItemForm";
 
-const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen, countListItems }) => {
+const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen }) => {
   const handlePrint = () => {
     window.print();
   };
@@ -59,7 +59,6 @@ const InvoiceFormAdd = ({ handleAddItem, setIsFormOpen, isFormOpen, countListIte
       {isFormOpen && (
         <InvoiceAddItemForm
           handleAddItem={handleAddItem}
-          countListItems={countListItems}
           onCancel={() => setIsFormOpen(false)}
           currency={"USD"}
         />
