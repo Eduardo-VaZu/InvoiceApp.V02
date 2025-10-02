@@ -247,7 +247,7 @@ Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE](LICENSE) pa
 
 ## 👨‍💻 Autor
 
-**Eduardo Vázquez**
+**Eduardo Vargas**
 - GitHub: [@Eduardo-VaZu](https://github.com/Eduardo-VaZu)
 
 ## 🙏 Agradecimientos
