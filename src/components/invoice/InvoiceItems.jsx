@@ -1,10 +1,12 @@
+import React from "react";
+import PropTypes from "prop-types";
 import InvoiceRowItems from "./InvoiceRowItems";
 
 const InvoiceItems = ({ items, handleDeleteItem, formatCurrency }) => {
   const headers = ["Product", "Unit Price", "Quantity", "Total", "Action"];
 
   return (
-    <div className="mt-7">
+    <div className="mt-4 sm:mt-7">
       <div className="overflow-x-auto rounded-2xl mt-1">
         <table className="min-w-full">
           <thead className="bg-indigo-200 hidden md:table-header-group">
@@ -12,7 +14,7 @@ const InvoiceItems = ({ items, handleDeleteItem, formatCurrency }) => {
               {headers.map((header) => (
                 <th
                   key={header}
-                  className={`px-6 py-3 text-sm font-bold text-gray-900 uppercase tracking-wider text-center`}
+                  className={`px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wider text-center`}
                 >
                   {header}
                 </th>
@@ -34,7 +36,7 @@ const InvoiceItems = ({ items, handleDeleteItem, formatCurrency }) => {
               <tr>
                 <td
                   colSpan={headers.length}
-                  className="text-center p-6 text-gray-500"
+                  className="text-center p-4 sm:p-6 text-gray-500 text-sm"
                 >
                   No items have been added yet.
                 </td>
@@ -46,4 +48,18 @@ const InvoiceItems = ({ items, handleDeleteItem, formatCurrency }) => {
     </div>
   );
 };
+
+InvoiceItems.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      product: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  handleDeleteItem: PropTypes.func.isRequired,
+  formatCurrency: PropTypes.func.isRequired,
+};
+
 export default InvoiceItems;

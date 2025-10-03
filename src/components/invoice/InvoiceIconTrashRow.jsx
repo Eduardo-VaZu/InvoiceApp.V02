@@ -1,3 +1,5 @@
+import React from "react";
+
 const InvoiceIconTrashRow = () => {
   return (
     <svg

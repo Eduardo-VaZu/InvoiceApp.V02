@@ -1,7 +1,7 @@
-import invoice from "../data/invoice";
+import { getStoredInvoice } from "./localStorageService";
 
-const getInvoice = () => {
-  return invoice;
+export const getInvoice = () => {
+  return getStoredInvoice();
 };
 
 export default getInvoice;
