@@ -21,7 +21,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
             <input
               type="text"
               value={product}
-              onChange={(e) => handleChange(e.target.value)}
+              onChange={handleChange}
               placeholder="Name product"
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm"
@@ -35,7 +35,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
             <input
               type="number"
               value={quantity}
-              onChange={(e) => handleChange(e.target.value)}
+              onChange={handleChange}
               min="1"
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm"
@@ -49,7 +49,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
             <input
               type="number"
               value={price}
-              onChange={(e) => handleChange(e.target.value)}
+              onChange={handleChange}
               min="0.01"
               step="0.01"
               required
