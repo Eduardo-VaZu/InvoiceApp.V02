@@ -1,6 +1,6 @@
 const InvoiceTotal = ({ subtotal, taxRate, discount, taxAmount, total }) => {
   return (
-    <div className="flex jusqtify-end mt-10">
+    <div className="flex justify-end mt-10">
       <div className="w-full sm:w-80 space-y-2 p-5 bg-indigo-50 rounded-lg shadow-inner border-2 border-indigo-200">
         <div className="flex justify-between text-sm text-gray-700">
           <span>Subtotal:</span>

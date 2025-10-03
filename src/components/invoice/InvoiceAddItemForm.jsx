@@ -1,7 +1,6 @@
 import useForm from "../../hooks/useForm";
 
 const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
-
   const { formData, handleSubmit, handleChange } = useForm(handleAddItem);
   const { product, quantity, price } = formData;
 
@@ -19,6 +18,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
               Product
             </label>
             <input
+              name="product"
               type="text"
               value={product}
               onChange={handleChange}
@@ -33,6 +33,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
               Quantity
             </label>
             <input
+              name="quantity"
               type="number"
               value={quantity}
               onChange={handleChange}
@@ -47,6 +48,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
               Unit Price (USD)
             </label>
             <input
+              name="price"
               type="number"
               value={price}
               onChange={handleChange}

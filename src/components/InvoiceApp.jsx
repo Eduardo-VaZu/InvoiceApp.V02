@@ -3,7 +3,7 @@ import InvoiceInformation from "./invoice/InvoiceInformation";
 import InvoiceItems from "./invoice/InvoiceItems";
 import InvoiceTotal from "./invoice/InvoiceTotal";
 import InvoiceFormAdd from "./invoice/InvoiceFormAdd";
-import useForm from "../hooks/useForm";
+import useInvoice from "../hooks/useInvoice";
 
 const InvoiceApp = () => {
   const {
@@ -19,7 +19,7 @@ const InvoiceApp = () => {
     discount,
     taxAmount,
     total,
-  } = useForm;
+  } = useInvoice();
 
   return (
     <>
