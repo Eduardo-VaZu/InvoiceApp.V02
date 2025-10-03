@@ -1,15 +1,9 @@
 import useForm from "../../hooks/useForm";
 
 const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
-  const {
-    product,
-    quantity,
-    price,
-    setproduct,
-    setQuantity,
-    setPrice,
-    handleSubmit,
-  } = useForm(handleAddItem);
+
+  const { formData, handleSubmit, handleChange } = useForm(handleAddItem);
+  const { product, quantity, price } = formData;
 
   return (
     <>
@@ -27,7 +21,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
             <input
               type="text"
               value={product}
-              onChange={(e) => setproduct(e.target.value)}
+              onChange={(e) => handleChange(e.target.value)}
               placeholder="Name product"
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm"
@@ -41,7 +35,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
             <input
               type="number"
               value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(e) => handleChange(e.target.value)}
               min="1"
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm"
@@ -55,7 +49,7 @@ const InvoiceAddItemForm = ({ handleAddItem, onCancel }) => {
             <input
               type="number"
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={(e) => handleChange(e.target.value)}
               min="0.01"
               step="0.01"
               required

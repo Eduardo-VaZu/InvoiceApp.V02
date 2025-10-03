@@ -1,12 +1,26 @@
 import { useState } from "react";
 
 const useForm = (handleAddItem) => {
-  const [product, setproduct] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(0);
+  const [formData, setFormData] = useState({
+    product: "",
+    quantity: 1,
+    price: 0.0,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+
+    // Convertir a número si el tipo de input es 'number', sino dejar como string.
+    setFormData({
+      ...formData,
+      [name]: type === "number" ? Number(value) : value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const { product, quantity, price } = formData;
 
     if (!product.trim() || Number(quantity) <= 0 || Number(price) <= 0) {
       console.error("Por favor, complete todos los campos correctamente.");
@@ -20,19 +34,18 @@ const useForm = (handleAddItem) => {
     };
 
     handleAddItem(newItem);
-    setproduct("");
-    setQuantity(1);
-    setPrice(0.0);
+
+    setFormData({
+      product: "",
+      quantity: 1,
+      price: 0.0,
+    });
   };
 
   return {
-    product,
-    quantity,
-    price,
-    setproduct,
-    setQuantity,
-    setPrice,
+    formData,
     handleSubmit,
+    handleChange,
   };
 };
 
