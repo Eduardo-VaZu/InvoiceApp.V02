@@ -14,6 +14,11 @@ const InvoiceApp = () => {
     invoiceData,
     isFormOpen,
     setIsFormOpen,
+    subtotal,
+    taxRate,
+    discount,
+    taxAmount,
+    total,
   } = useForm;
 
   return (
@@ -43,8 +48,13 @@ const InvoiceApp = () => {
                 formatCurrency={formatCurrency}
               />
             </div>
-            <InvoiceTotal items={invoiceData.items} />
-
+            <InvoiceTotal
+              taxRate={taxRate}
+              subtotal={subtotal}
+              discount={discount}
+              taxAmount={taxAmount}
+              total={total}
+            />
             <div className="mt-10 p-4 border-t border-gray-200 text-center">
               <p className="text-xs text-gray-500 italic">
                 Thank you for your business. All payments are due within 30 days

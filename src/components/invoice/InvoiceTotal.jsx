@@ -1,15 +1,6 @@
-
-const InvoiceTotal = ({ items }) => {
-  const taxRate = 0.19;
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.quantity * item.price,
-    0
-  );
-  const discount = subtotal > 999 ? 50.0 : 0.0;
-  const taxAmount = (subtotal - discount) * taxRate;
-  const total = subtotal - discount + taxAmount;
+const InvoiceTotal = ({ subtotal, taxRate, discount, taxAmount, total }) => {
   return (
-    <div className="flex justify-end mt-10">
+    <div className="flex jusqtify-end mt-10">
       <div className="w-full sm:w-80 space-y-2 p-5 bg-indigo-50 rounded-lg shadow-inner border-2 border-indigo-200">
         <div className="flex justify-between text-sm text-gray-700">
           <span>Subtotal:</span>
@@ -25,7 +16,7 @@ const InvoiceTotal = ({ items }) => {
         </div>
 
         <div className="flex justify-between text-sm text-gray-700 pt-2">
-          <span>Tax  ({taxRate * 100}%):</span>
+          <span>Tax ({taxRate * 100}%):</span>
           <span>USD {taxAmount.toFixed(2)}</span>
         </div>
 
@@ -42,4 +33,3 @@ const InvoiceTotal = ({ items }) => {
   );
 };
 export default InvoiceTotal;
-

@@ -61,6 +61,17 @@ const useInvoice = () => {
     }).format(amount);
   };
 
+  const taxRate = 0.19;
+
+  const subtotal = invoiceData.items.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0
+  );
+
+  const discount = subtotal > 999 ? 50.0 : 0.0;
+  const taxAmount = (subtotal - discount) * taxRate;
+  const total = subtotal - discount + taxAmount;
+
   return {
     formatCurrency,
     handlePrint,
@@ -69,6 +80,11 @@ const useInvoice = () => {
     invoiceData,
     isFormOpen,
     setIsFormOpen,
+    subtotal,
+    taxRate,
+    discount,
+    taxAmount,
+    total,
   };
 };
 
