@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useForm = (handleAddItem) => {
+export const useForm = (handleAddItem) => {
   const [formData, setFormData] = useState({
     product: "",
     quantity: 1,
@@ -142,4 +142,4 @@ const useForm = (handleAddItem) => {
   };
 };
 
-export default useForm;
+

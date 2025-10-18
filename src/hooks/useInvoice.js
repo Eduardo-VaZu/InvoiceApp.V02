@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import useInvoiceData from "./useInvoiceData";
+import {useInvoiceData} from "./useInvoiceData";
 
-const useInvoice = () => {
+export const useInvoice = () => {
   const { invoiceData, setInvoiceData, isLoading, error, updateInvoiceData } = useInvoiceData();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [operationError, setOperationError] = useState(null);
@@ -21,7 +21,6 @@ const useInvoice = () => {
       let updatedItems = [];
       let success = false;
 
-      // Lógica para agregar o actualizar item
       const existingItem = invoiceData.items.find(
         (item) => item.product.toLowerCase() === newProductLower
       );
@@ -41,7 +40,6 @@ const useInvoice = () => {
         updatedItems = [...invoiceData.items, postItem];
       }
 
-      // Actualizar los datos con manejo de errores
       success = await updateInvoiceData({
         ...invoiceData,
         items: updatedItems
@@ -136,7 +134,6 @@ const useInvoice = () => {
     }
   }, [invoiceData.items, taxRate]);
 
-  // Limpiar errores cuando cambia la factura
   useEffect(() => {
     setOperationError(null);
   }, [invoiceData]);
@@ -160,5 +157,3 @@ const useInvoice = () => {
     operationError,
   };
 };
-
-export default useInvoice;

@@ -6,7 +6,7 @@ import InvoiceTotal from "./InvoiceTotal";
 import InvoiceFormAdd from "./InvoiceFormAdd";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import ErrorMessage from "../ui/ErrorMessage";
-import useInvoice from "../../hooks/useInvoice";
+import {useInvoice} from "../../hooks/useInvoice";
 
 const InvoiceApp = () => {
   const {

@@ -2,7 +2,6 @@ import defaultInvoice from '../data/invoice';
 
 const INVOICE_KEY = 'invoice_data';
 
-// Obtener datos de la factura desde localStorage o usar datos por defecto
 export const getStoredInvoice = () => {
   try {
     const storedData = localStorage.getItem(INVOICE_KEY);
@@ -13,7 +12,6 @@ export const getStoredInvoice = () => {
   }
 };
 
-// Guardar datos de la factura en localStorage
 export const saveInvoice = (invoiceData) => {
   try {
     localStorage.setItem(INVOICE_KEY, JSON.stringify(invoiceData));
@@ -24,12 +22,10 @@ export const saveInvoice = (invoiceData) => {
   }
 };
 
-// Actualizar datos de la factura en localStorage
 export const updateInvoice = (invoiceData) => {
   return saveInvoice(invoiceData);
 };
 
-// Limpiar datos de la factura (volver a valores por defecto)
 export const resetInvoice = () => {
   try {
     localStorage.removeItem(INVOICE_KEY);
@@ -39,3 +35,4 @@ export const resetInvoice = () => {
     return false;
   }
 };
+
