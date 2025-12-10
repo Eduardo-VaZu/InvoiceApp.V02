@@ -51,13 +51,15 @@ export const useForm = (handleAddItem) => {
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
-    const newValue = type === "number" ? Number(value) : value;
+    // Allow empty string or raw value for numbers to support intermediate editing states (e.g. "10.")
+    const newValue = type === "number" && value === "" ? "" : (type === "number" ? value : value);
     
     setFormData({
       ...formData,
       [name]: newValue,
     });
     
+    // Pass the raw value to validation; validation logic might need to handle strings if not already correct
     const error = validateField(name, newValue);
     setErrors({
       ...errors,

@@ -61,7 +61,7 @@ export const useInvoiceData = () => {
   const updateInvoiceData = useCallback(
     async (newData) => {
       try {
-        setIsLoading(true);
+        // Do not set global loading state for updates to avoid full page re-render/flash 
         setError(null);
 
         const updatedData = {
@@ -82,8 +82,6 @@ export const useInvoiceData = () => {
         setError("Error al actualizar los datos: " + err.message);
         console.error("Error al actualizar datos:", err);
         return false;
-      } finally {
-        setIsLoading(false);
       }
     },
     [invoiceData]

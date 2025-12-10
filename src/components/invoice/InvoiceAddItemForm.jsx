@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import useForm from "../../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 
 const InvoiceAddItemForm = ({
   handleAddItem,

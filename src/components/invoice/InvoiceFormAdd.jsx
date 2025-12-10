@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import InvoiceAddItemForm from "./InvoiceAddItemForm";
 
 const InvoiceFormAdd = ({
   handlePrint,
@@ -49,8 +50,6 @@ const InvoiceFormAdd = ({
           </svg>
           <span>Print</span>
         </button>
-
-        {/* Botón de Añadir/Cerrar Formulario */}
         <button
           type="button"
           onClick={() => setIsFormOpen((prev) => !prev)}
